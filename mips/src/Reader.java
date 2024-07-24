@@ -1,19 +1,28 @@
 import java.io.*;
-import java.util.*;
-import javafx.util.Pair;
 
 public class Reader {
     private String filename;
-    private String content[];
-    private String elements[];
 
     public Reader(String filename)throws IOException{
         this.filename = filename;
-        FileReader leitor = new FileReader(filename);
-        BufferedReader reading = new BufferedReader(leitor);
-        content = reading.readLine().split("\n");
-        leitor.close();
+        BufferedReader leitor = new BufferedReader(new FileReader(filename));
+        String linha;
 
-        elements = content[0].split(",");
+        while ((linha = leitor.readLine()) != null) {
+            System.out.println(linha);
+            Tipador.identify(linha);
+        }
+        leitor.close();
+    }
+
+    static String getRegis (String inst){ 
+        int index = inst.indexOf(" ");
+        String regis = inst.substring(index).replace(" ","");
+        return regis;
+    }
+
+    static String getInstruction (String inst){
+        String instruction = inst.split(" ")[0];
+        return instruction;
     }
 }
