@@ -1,0 +1,6 @@
+sll $s1, $s2, 12
+srl $s1, $s2, 12
+sra $s1, $s2, 12
+sllv $s1, $s2, 12
+srlv $s1, $s2, 12
+srav $s1, $s2, 12
